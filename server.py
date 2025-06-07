@@ -76,5 +76,6 @@ def decline_pr(decline: DeclinePullRequest) -> dict:
     return decline_pull_request(decline)
 
 if __name__ == "__main__":
+     mcp.settings.host = "0.0.0.0" 
      mcp.settings.port = 3005
      mcp.run(transport="sse")
