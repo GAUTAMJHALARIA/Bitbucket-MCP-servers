@@ -76,4 +76,4 @@ def decline_pr(decline: DeclinePullRequest) -> dict:
     return decline_pull_request(decline)
 
 if __name__ == "__main__":
-     mcp.run(transport="stdio")
+     mcp.run(transport="streamable-http")
