@@ -61,12 +61,12 @@ def approve_pr(approve: ApprovePullRequest) -> dict:
     """
     return approve_pull_request(approve)
 
-@mcp.tool()
-def merge_pr(merge: MergePullRequest) -> dict:
-    """
-    Merge a Bitbucket pull request.
-    """
-    return merge_pull_request(merge)
+# @mcp.tool()
+# def merge_pr(merge: MergePullRequest) -> dict:
+#     """
+#     Merge a Bitbucket pull request.
+#     """
+#     return merge_pull_request(merge)
 
 @mcp.tool()
 def decline_pr(decline: DeclinePullRequest) -> dict:
