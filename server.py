@@ -83,4 +83,6 @@ def inline_comment(comment: InlineComment) ->dict:
     return add_inline_comment(comment)
 
 if __name__ == "__main__":
+     mcp.settings.host = "0.0.0.0"
+     mcp.settings.port = 3005
      mcp.run(transport="sse")
