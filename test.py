@@ -4,8 +4,8 @@ from fastmcp.client import Client
 async def test_create_pr(client):
     response = await client.call_tool("create_pr", {
         "createpr": {
-            "workspace": "demo145",
-            "repo_slug": "demorepo",
+            "workspace": "codenice",
+            "repo_slug": "gimbooks-server",
             "source_branch": "demofeature",
             "destination_branch": "main",
             "title": "Add new feature",
@@ -112,11 +112,11 @@ async def test_decline_pull_request(client):
 
 async def main():
     async with Client("http://127.0.0.1:8000/mcp") as client:
-         await test_create_pr(client)
+        # await test_create_pr(client)
         # await test_list_prs(client)
         # await test_review_pr(client)
         # await test_add_task_to_pr_comment(client)
-        # await test_get_pull_request_details(client)
+         await test_get_pull_request_details(client)
         # await test_update_pull_request(client)
         # await test_get_pr_diff(client)
         # await test_approve_pull_request(client)

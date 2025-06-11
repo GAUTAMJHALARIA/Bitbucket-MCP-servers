@@ -75,7 +75,12 @@ def decline_pr(decline: DeclinePullRequest) -> dict:
     """
     return decline_pull_request(decline)
 
+@mcp.tool()
+def inline_comment(comment: InlineComment) ->dict:
+    """ 
+    Add an inline comment to a specific line in Bitbucket pull request.
+    """
+    return add_inline_comment(comment)
+
 if __name__ == "__main__":
-     mcp.settings.host = "0.0.0.0" 
-     mcp.settings.port = 3005
-     mcp.run(transport="sse")
+     mcp.run(transport="stdio")

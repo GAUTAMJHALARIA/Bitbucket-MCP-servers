@@ -112,3 +112,31 @@ def decline_pull_request(decline: DeclinePullRequest) -> dict:
     response = requests.post(url, auth=auth)
     response.raise_for_status()
     return response.json()
+
+def add_inline_comment(comment: InlineComment) -> dict:
+    url = f"{BITBUCKET_API_URL}/repositories/{comment.workspace}/{comment.repo_slug}/pullrequests/{comment.pr_id}/comments"
+    auth = get_auth()
+
+    # Build inline payload with only the correct field
+    inline_payload = {
+        "path": comment.file_path
+    }
+
+    if comment.side == "RIGHT":
+        inline_payload["to"] = comment.line_number
+    elif comment.side == "LEFT":
+        inline_payload["from"] = comment.line_number
+    else:
+        raise ValueError("side must be 'LEFT' or 'RIGHT'")
+
+    payload = {
+        "content": {
+            "raw": comment.comment_text
+        },
+        "inline": inline_payload
+    }
+
+    response = requests.post(url, auth=auth, json=payload)
+    response.raise_for_status()
+    return response.json()
+
